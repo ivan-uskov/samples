@@ -55,7 +55,7 @@ void analyze(istream & in, ostream & out)
     }
 
     auto strSize = str.size();
-    for (auto p : inputFreq)
+    for (auto & p : inputFreq)
     {
         p.second = (p.second / strSize) * 100.0;
     }
@@ -69,7 +69,7 @@ void analyze(istream & in, ostream & out)
             auto lowerCh = tolower(p.first);
             if (p.second >= (sp.second - normalDiff) && p.second <= (sp.second + normalDiff))
             {
-                auto key = (lowerCh - sp.first);
+                auto key = abs(lowerCh - sp.first);
                 if (keys.find(key) == keys.end())
                 {
                     keys[key] = 0;
@@ -86,9 +86,7 @@ void analyze(istream & in, ostream & out)
 
     if (key != keys.end())
     {
-        out << "Detected key: " << key->first << endl << endl;
-        istringstream strm(str);
-        decrypt(strm, out, key->first);
+        out << "Detected key: " << key->first << " " << key->second <<  endl << endl;
     }
     else
     {
