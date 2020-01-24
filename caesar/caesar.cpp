@@ -86,7 +86,7 @@ void analyze(istream & in, ostream & out)
 
     if (key != keys.end())
     {
-        out << "Detected key: " << key->first << " " << key->second <<  endl << endl;
+        out << "Detected key: " << key->first <<  endl << endl;
     }
     else
     {
